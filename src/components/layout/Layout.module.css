@@ -1,0 +1,13 @@
+.layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 139, 0.664), darkblue, rgba(0, 0, 139, 0.664));
+    padding: 5px 20px;
+}
+
+.layout a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
