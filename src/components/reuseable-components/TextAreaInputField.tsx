@@ -1,6 +1,7 @@
 import React from "react";
 import { InputProps } from "../../intefaces/InputProps";
 
+
 // Stylesheet
 import styles from "./InputField.module.css";
 
@@ -8,20 +9,22 @@ import styles from "./InputField.module.css";
 import Label from "./Label";
 
 
-const InputField: React.FC<InputProps> = ({ label, type, name, value, validationError, handleChange }) => {
-
+const TextAreaInputField: React.FC<InputProps> = (
+    { label, name, value, validationError, handleChange }
+): JSX.Element => {
 
     return (
         <div className={styles.input_field}>
             {label && <Label label = {label} />}
-            <input
-                type = {type}
+            <textarea
+                rows = {20}
                 name = {name}
                 value = {value}
                 onChange = {handleChange}
+                
             />
         </div>
     );
 }
 
-export default InputField;
+export default TextAreaInputField;

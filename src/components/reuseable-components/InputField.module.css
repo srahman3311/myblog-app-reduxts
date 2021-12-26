@@ -1,0 +1,19 @@
+.input_field {
+    width: 500px;
+}
+
+.label {
+    display: block;
+}
+
+.input_field input[type=text] {
+    width: 100%;
+}
+
+.input_field textarea {
+    width: 100%;
+}
+
+.input_field input[type=text]:focus, .input_field textarea:focus {
+    outline: none;
+}
