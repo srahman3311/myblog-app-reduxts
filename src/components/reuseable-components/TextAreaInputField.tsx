@@ -1,5 +1,5 @@
 import React from "react";
-import { InputProps } from "../../intefaces/InputProps";
+import { InputProps } from "../../interfaces/InputProps";
 
 
 // Stylesheet

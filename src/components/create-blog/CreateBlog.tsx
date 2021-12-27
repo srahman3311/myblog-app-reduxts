@@ -1,7 +1,7 @@
 import { ChangeEventHandler, ChangeEvent, useState } from "react";
 
 // Interface
-import { BlogInfoState } from "../../intefaces/BlogInfoState";
+import { BlogInfoState } from "../../interfaces/BlogInfoState";
 
 // Component
 import InputField from "../reuseable-components/InputField";
