@@ -1,10 +1,9 @@
 import { ChangeEventHandler, ChangeEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addNewBlog } from "../../store/action-creators/blogs";
 
 // Interface
 import { BlogInfoState } from "../../interfaces/BlogInfoState";
-import { State } from "../../store/reducers/index";
 
 // Component
 import InputField from "../reuseable-components/InputField";
@@ -15,7 +14,6 @@ import TextAreaInputField from "../reuseable-components/TextAreaInputField";
 const CreateBlog: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
-    const blogs = useSelector((state: State) => state.blogs)
 
     const [blogInfo, setBlogInfo] = useState<BlogInfoState>({
         id: "1",
@@ -44,17 +42,6 @@ const CreateBlog: React.FC = (): JSX.Element => {
 
     return (
         <div className="">
-
-            { 
-                blogs &&
-                <div className="">
-                    {blogs.map(blog => {
-                        return (
-                            <p>{blog.title}</p>
-                        );
-                    })}
-                </div>
-            }
             <h2>Create Blog</h2>
             <InputField
                 label = "Title" 
