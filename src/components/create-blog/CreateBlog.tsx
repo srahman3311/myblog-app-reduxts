@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ChangeEvent, useState } from "react";
+import { ChangeEventHandler, MouseEventHandler, ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
@@ -41,10 +41,11 @@ const CreateBlog: React.FC = (): JSX.Element => {
         });
     }
 
-    const createBlog = () => {
+    const createBlog: MouseEventHandler<HTMLButtonElement> = () => {
 
         dispatch(addNewBlog(blogInfo));
         navigate(`/blogs/blog/${blogInfo.id}`);
+        
     }
 
 
@@ -69,6 +70,7 @@ const CreateBlog: React.FC = (): JSX.Element => {
                 handleChange = {handleChange}
             />
             <button onClick={createBlog}>Add</button>
+            {/* <button onClick={(event) => dispatch(addNewBlog(blogInfo))}></button> */}
 
         </div>
     );

@@ -1,31 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { BlogState } from "../../store/interfaces/BlogState";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteBlog } from "../../store/action-creators/blogs";
 import { State } from "../../store/reducers/index";
+import styles from "../../styles/Blogs.module.css";
 
 const BlogItem: React.FC = (): JSX.Element => {
 
-    const blogs = useSelector((state: State) => state.blogs);
-    const [blog, setBlog] = useState<BlogState | undefined>()
     const { blogId } = useParams();
+    const navigate = useNavigate();
 
-    
-    useEffect(() => {
-        setBlog(blogs.find(blog => blog.id === blogId));
-    }, [])
+    const dispatch = useDispatch();
+    const blogs = useSelector((state: State) => state.blogs);
+    const blog = blogs.find(blog => blog.id === blogId);
+
+    const removeBlog = () => {
+        if(blog) dispatch(deleteBlog(blog.id));
+        navigate("/create-blog");
+    }
 
     return (
-        <div className="blog_item">
+        <div className={styles.blog_item}>
             {
                 blog &&
                 <>
                     <h2>{blog.title}</h2>
                     <p>{blog.content}</p>
+                    <button onClick={removeBlog}>Delete</button>
+
                 </>
             }
-            
-            <p>{blogId}</p>
 
         </div>
     );
