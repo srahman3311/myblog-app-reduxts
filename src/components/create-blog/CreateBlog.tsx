@@ -1,5 +1,7 @@
 import { ChangeEventHandler, ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router-dom";
 import { addNewBlog } from "../../store/action-creators/blogs";
 
 // Interface
@@ -14,9 +16,11 @@ import TextAreaInputField from "../reuseable-components/TextAreaInputField";
 const CreateBlog: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
 
     const [blogInfo, setBlogInfo] = useState<BlogInfoState>({
-        id: "1",
+        id: uuidv4(),
         title: "",
         content: ""
     });
@@ -35,6 +39,12 @@ const CreateBlog: React.FC = (): JSX.Element => {
                 [name]: value
             }
         });
+    }
+
+    const createBlog = () => {
+
+        dispatch(addNewBlog(blogInfo));
+        navigate(`/blogs/blog/${blogInfo.id}`);
     }
 
 
@@ -58,7 +68,7 @@ const CreateBlog: React.FC = (): JSX.Element => {
                 validationError = {validationError}
                 handleChange = {handleChange}
             />
-            <button onClick={() => dispatch(addNewBlog(blogInfo))}>Add</button>
+            <button onClick={createBlog}>Add</button>
 
         </div>
     );

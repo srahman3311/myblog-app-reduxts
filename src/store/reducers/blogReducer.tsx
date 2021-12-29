@@ -18,6 +18,7 @@ const blogReducer = (state: BlogState[] = [], action: Action): BlogState[] => {
             return state;
 
     }
+    
 }
 
 export default blogReducer;

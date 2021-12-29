@@ -5,7 +5,9 @@ import { State } from "../../store/reducers/index";
 
 const Blogs: React.FC = (): JSX.Element => {
 
-    const blogs = useSelector((state: State) => state.blogs)
+    const blogs = useSelector((state: State) => state.blogs);
+
+    console.log(blogs);
 
 
     return (
