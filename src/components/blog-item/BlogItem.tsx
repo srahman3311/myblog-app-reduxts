@@ -15,8 +15,12 @@ const BlogItem: React.FC = (): JSX.Element => {
     const blog = blogs.find(blog => blog.id === blogId);
 
     const removeBlog = () => {
+
         if(blog) dispatch(deleteBlog(blog.id));
-        navigate("/create-blog");
+
+        alert("deleted successfully");
+        
+        navigate("/blogs");
     }
 
     return (
